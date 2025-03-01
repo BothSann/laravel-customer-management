@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section("content")
-<div class="row justify-content-center mt-5">
+<div class="row justify-content-center my-5">
     <div class="col-md-8">
         <h3>Edit customer</h3>
         @if ($errors->any())
@@ -15,17 +15,21 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-2">
-                        <a href="{{ route("home") }}" class="btn" style="background-color: #4643d3; color: white;"><i class="fas fa-chevron-left"></i> Back</a>
+                        <a href="{{ route("customers.index") }}" class="btn" style="background-color: #4643d3; color: white;"><i class="fas fa-chevron-left"></i> Back</a>
                     </div>
                 </div>
 
             </div>
             <div class="card-body">
-                <form action="{{ route("customers.store") }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route("customers.update", $customer->id) }}" method="POST" enctype="multipart/form-data">
                     <div class="row">
                         @csrf
+                        @method("PUT")
                         <div class="col-md-12 mb-3">
                             <div class="form-group">
+                                <div style="width: 300px; height: 300px;">
+                                    <img src="{{ asset($customer->image) }}" class="img-thumbnail" alt="...">
+                                </div>
                                 <label for="">Image</label>
                                 <input type="file" class="form-control" name="image">
                             </div>
