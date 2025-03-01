@@ -65,7 +65,7 @@
                         <div class="col-md-12 mb-3">
                             <div class="form-group">
                                 <label for="">About</label>
-                                <textarea class="form-control" name="about" id="" value="{{ old("about") }}"></textarea>
+                                <textarea class="form-control" name="about" id="">{{ old("about") }}</textarea>
                             </div>
                         </div>
 
