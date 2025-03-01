@@ -18,11 +18,11 @@ class CustomerStoreRequest extends FormRequest
     {
         return [    
             "image" =>[ "nullable"],
-            "first_name" => ["required", "string",  "min:4", "max:255"],
-            "last_name" => ["required", "string",  "min:4", "max:255"],
-            "email"=> ["required","email"],
+            "first_name" => ["required", "string",  "min:2", "max:255"],
+            "last_name" => ["required", "string",  "min:2", "max:255"],
+            "email"=> ["required","email", "max:255"],
             "phone" => ["required", "string", "min:10", "max:15"],
-            "bank_account_number" => ["required", "numeric", "max:50"],
+            "bank_account_number" => ["required", "string", "min:11", "max:11"],
             "about" => ["nullable", "string", "max:500"]
         ];
     }
