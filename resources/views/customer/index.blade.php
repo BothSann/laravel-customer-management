@@ -45,19 +45,19 @@
                     </thead>
                     <tbody>
                         @foreach ( $customers as $customer )
-                        <tr>
-                            <th scope="row">{{ $loop->iteration }}</th>
-                            <td>{{ $customer->first_name }}</td>
-                            <td>{{ $customer->last_name }}</td>
-                            <td>{{ $customer->phone }}</td>
-                            <td>{{ $customer->email }}</td>
-                            <td>{{ $customer->bank_account_number }}</td>
-                            <td>
-                                <a href="" style="color: #2c2c2c;" class="ms-1 me-1"><i class="far fa-edit"></i></a>
-                                <a href="/customer-details.html" style="color: #2c2c2c;" class="ms-1 me-1"><i class="far fa-eye"></i></a>
-                                <a href="" style="color: #2c2c2c;" class="ms-1 me-1"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                          </tr>
+                            <tr>
+                                <th scope="row">{{ $loop->iteration }}</th>
+                                <td>{{ $customer->first_name }}</td>
+                                <td>{{ $customer->last_name }}</td>
+                                <td>{{ $customer->phone }}</td>
+                                <td>{{ $customer->email }}</td>
+                                <td>{{ $customer->bank_account_number }}</td>
+                                <td>
+                                    <a href="{{ route("customers.edit", $customer->id) }}" style="color: #2c2c2c;" class="ms-1 me-1"><i class="far fa-edit"></i></a>
+                                    <a href="/customer-details.html" style="color: #2c2c2c;" class="ms-1 me-1"><i class="far fa-eye"></i></a>
+                                    <a href="" style="color: #2c2c2c;" class="ms-1 me-1"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
                         @endforeach
                       
                     </tbody>
