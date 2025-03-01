@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset("assets/css/fontawesome.min.css") }}">
 
 </head>
-<body>
+<body class="overflow-x-hidden">
 
     @yield("content");
 
