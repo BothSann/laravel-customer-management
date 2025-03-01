@@ -40,6 +40,8 @@ class CustomerController extends Controller
         $customer->bank_account_number = $request->bank_account_number; 
         $customer->about = $request->about;
         $customer->save();
+
+        return redirect()->route("home");
     }
 
     /**
