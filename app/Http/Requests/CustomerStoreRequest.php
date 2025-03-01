@@ -22,7 +22,7 @@ class CustomerStoreRequest extends FormRequest
             "last_name" => ["required", "string",  "min:4", "max:255"],
             "email"=> ["required","email"],
             "phone" => ["required", "string", "min:10", "max:15"],
-            "bank_account_number" => ["required", "numeric"],
+            "bank_account_number" => ["required", "numeric", "max:50"],
             "about" => ["nullable", "string", "max:500"]
         ];
     }
