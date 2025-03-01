@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('email')->unique();
             $table->string('phone')->unique();
-            $table->integer('bank_account_number')->unique();
+            $table->string('bank_account_number')->unique();
             $table->text("about")->nullable();
             $table->timestamps();
         });
