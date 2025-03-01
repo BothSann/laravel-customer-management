@@ -17,7 +17,7 @@ class CustomerStoreRequest extends FormRequest
     public function rules(): array
     {
         return [    
-            "image" =>[ "nullable"],
+            "image" =>[ "nullable", "image"],
             "first_name" => ["required", "string",  "min:2", "max:255"],
             "last_name" => ["required", "string",  "min:2", "max:255"],
             "email"=> ["required","email", "max:255"],
