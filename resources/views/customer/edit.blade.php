@@ -3,7 +3,7 @@
 @section("content")
 <div class="row justify-content-center my-5">
     <div class="col-md-8">
-        <h3>Edit customer</h3>
+        <h3>Edit Customer</h3>
         @if ($errors->any())
             @foreach ($errors->all() as $error)
                 <div class="alert alert-danger">
@@ -27,8 +27,8 @@
                         @method("PUT")
                         <div class="col-md-12 mb-3">
                             <div class="form-group">
-                                <div style="width: 300px; height: 300px;">
-                                    <img src="{{ asset($customer->image) }}" class="img-thumbnail" alt="...">
+                                <div>
+                                    <img src="{{ asset($customer->image) }}" style="width: 300px; height: 300px;" class="img-thumbnail" alt="...">
                                 </div>
                                 <label for="">Image</label>
                                 <input type="file" class="form-control" name="image">
