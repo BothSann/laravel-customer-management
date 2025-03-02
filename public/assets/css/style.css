@@ -1,5 +1,5 @@
 .profile-head {
-    transform: translateY(5rem)
+    transform: translateY(5rem);
 }
 
 .cover {
@@ -11,9 +11,9 @@
 
 body {
     min-height: 100vh;
-    overflow-x:hidden;
+    overflow-x: hidden;
 }
 
 .media-body {
     margin-left: 20px;
-  }
+}
