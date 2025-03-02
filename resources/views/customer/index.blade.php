@@ -30,7 +30,7 @@
                 </div>
                 
                 <div class="col-md-2 text-end">
-                    <a href="{{ route("customers.trash") }}" class="btn btn-dark" ><i class="fas fa-trash-alt"></i> Trash</a>
+                    <a href="{{ route("customers.trash") }}" class="btn btn-danger" ><i class="fas fa-trash-alt"></i> Trash</a>
                 </div>
             </div>
                   
