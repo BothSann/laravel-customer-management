@@ -3,14 +3,14 @@
 @section("content")
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
-        <h3>Customers</h3>
+        <h3>Customers List</h3>
         <div class="card">
             <div class="card-header">
                 <div class="row">
                 <div class="col-md-2">
                     <a href="{{ route("customers.create") }}" class="btn" style="background-color: #4643d3; color: white;"><i class="fas fa-plus"></i> Create Customer</a>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-6">
                     <form action="{{ route("customers.index") }}">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Search anything..." aria-describedby="button-addon2" name="search" value="{{ request()->search }}">    
@@ -19,15 +19,20 @@
                     </form>
                 </div>
                 <div class="col-md-2">
-
                     <div class="input-group mb-3">
-                        <select class="form-select" name="" id="">
-                            <option value="">Newest to Old</option>
-                            <option value="">Old to Newest</option>
-                        </select>
+                        <form action="{{ route("customers.index") }}" method="GET" class="form-order">
+                            <select class="form-select" name="order" id="" onchange="$('.form-order').submit()">
+                                <option @selected(request()->order == "desc") value="desc">Newest to Oldest</option>
+                                <option @selected(request()->order == "asc") value="asc">Oldest to Newest</option>
+                            </select>
+                        </form>
                     </div>
                 </div>
+                
+                <div class="col-md-2 text-end">
+                    <a href="{{ route("customers.trash") }}" class="btn btn-dark" ><i class="fas fa-trash-alt"></i> Trash</a>
                 </div>
+            </div>
                   
             </div>
             <div class="card-body">
