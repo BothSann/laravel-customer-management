@@ -110,12 +110,12 @@ class CustomerController extends Controller
     public function destroy(string $id)
     {
         $customer = Customer::findOrFail($id);
-        File::delete(public_path($customer->image));
+        // File::delete(public_path($customer->image));
         $customer->delete();
         return redirect()->route("customers.index");
     }
 
-    public function trash(Request $request) {
+    public function trashIndex(Request $request) {
         $orderDirection = $request->order == "asc" ? "ASC" : "DESC";
 
         $customers = Customer::when($request->has("search"), function($query) use ($request) {
@@ -124,9 +124,23 @@ class CustomerController extends Controller
             ->orWhere("email", "LIKE", "%$request->search%")
             ->orWhere("phone", "LIKE", "%$request->search%")
             ->orWhere("bank_account_number", "LIKE", "%$request->search%");
-        })->orderBy("id", $orderDirection)->get();
+        })->orderBy("id", $orderDirection)->onlyTrashed()->get();
 
         return view("customer.trash", compact("customers"));
     }
-    
+
+    public function restore(int $id) {
+        $customer = Customer::onlyTrashed()->findOrFail($id);
+        $customer->restore();
+
+        return redirect()->back();
+    }
+
+    public function forceDestroy(int $id) {
+        $customer = Customer::onlyTrashed()->findOrFail($id);
+        File::delete(public_path($customer->image));
+        $customer->forceDelete();
+
+        return redirect()->back();  
+    }
 }
