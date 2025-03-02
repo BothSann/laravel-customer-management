@@ -57,7 +57,8 @@ class CustomerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $customer = Customer::findOrFail($id);
+        return view("customer.show", compact("customer"));
     }
 
     /**
@@ -78,7 +79,7 @@ class CustomerController extends Controller
 
         if($request->hasFile("image")){
             File::delete(public_path($customer->image));
-            $image = $request->file("image");
+            $image = $request->file( "image");
             $fileName = $image->store("", "public");
             $filePath = "/uploads/" . $fileName;
             $customer->image = $filePath;
@@ -92,10 +93,6 @@ class CustomerController extends Controller
         $customer->about = $request->about;
         $customer->save();
         return redirect()->route("customers.index"); 
-
-
-
-
     }
 
     /**
