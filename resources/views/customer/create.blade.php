@@ -3,7 +3,7 @@
 @section("content")
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
-        <h3>Create new customer</h3>
+        <h3>Create New Customer</h3>
         @if ($errors->any())
             @foreach ($errors->all() as $error)
                 <div class="alert alert-danger">
