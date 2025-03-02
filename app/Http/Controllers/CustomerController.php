@@ -15,13 +15,15 @@ class CustomerController extends Controller
      */
     public function index(Request $request)
     {
+        $orderDirection = $request->order == "asc" ? "ASC" : "DESC";
+
         $customers = Customer::when($request->has("search"), function($query) use ($request) {
             $query->where("first_name", "LIKE",  "%$request->search%")
             ->orWhere("last_name", "LIKE", "%$request->search%")
             ->orWhere("email", "LIKE", "%$request->search%")
             ->orWhere("phone", "LIKE", "%$request->search%")
             ->orWhere("bank_account_number", "LIKE", "%$request->search%");
-        })->get();
+        })->orderBy("id", $orderDirection)->get();
 
         return view("customer.index", compact("customers"));
     }
@@ -112,4 +114,19 @@ class CustomerController extends Controller
         $customer->delete();
         return redirect()->route("customers.index");
     }
+
+    public function trash(Request $request) {
+        $orderDirection = $request->order == "asc" ? "ASC" : "DESC";
+
+        $customers = Customer::when($request->has("search"), function($query) use ($request) {
+            $query->where("first_name", "LIKE",  "%$request->search%")
+            ->orWhere("last_name", "LIKE", "%$request->search%")
+            ->orWhere("email", "LIKE", "%$request->search%")
+            ->orWhere("phone", "LIKE", "%$request->search%")
+            ->orWhere("bank_account_number", "LIKE", "%$request->search%");
+        })->orderBy("id", $orderDirection)->get();
+
+        return view("customer.trash", compact("customers"));
+    }
+    
 }
